@@ -173,7 +173,6 @@ En person köper en eller flera bilar bid olika datum. En bil kan köpas av fler
 2. Skapa en konceptuell datamodell med objekten som uppfyller kraven ovan 
 3. Eftersom vi får många till många relationer måste vi använda oss av relationsobjekt som kopplingstabeller
 	- Eftersom varje datum kan det ske flera köp (som kräver info om bil och kunder) så måste relationspunkten hamna mellan Datum och Person + Bil
-## Tid för frågor och funderingar, miljö
 ## Installation
 
 SQL Command Line Utilities
