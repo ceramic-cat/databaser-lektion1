@@ -100,8 +100,8 @@ Direkt underlag till hur man bygger databasen. Ska vara en del av dokumentatione
 - Beroenden
 - etc..
 Får inte skilja sig från den fysiska modellen!
-Exempel: 
-![[Pasted image 20241227100819.png]]
+Exempel: ![Pasted image 20241227100819](https://github.com/user-attachments/assets/0e931105-5a61-4203-9675-f1734a820d35)
+
 PK är skriven i fetstil. 
 
 ## RI - Referentiell Integritet
@@ -123,7 +123,7 @@ När man skapar en databas behöver man ofta ange hur mycket utrymme den kommer 
 
 Man behöver även identifiera vilka tabeller som kan ge kapacitetsproblem (belastningsproblem). 
 
-![[Pasted image 20241227102234.png]]
+![Pasted image 20241227102234](https://github.com/user-attachments/assets/66fe8644-a559-492f-8ca6-6d7fe70690de)
 När vi började bygga denna fysiska modell så började vi med kund för att den har 2 1:n relationer. Det är även här man börjar med volymberäkning. 
 Kund - Telefon: 
 0/2/5 -> min/medelvärde(eller förväntat värde)/max värde
@@ -148,7 +148,7 @@ I vilken takt ökar tabeller?
 	Faktura, telefon, fakturarader ökar beroende på kund
 	Artiklar kan också öka oberoende, men i detta fall antag 10%
 EX: Enkel beräkning i excel
-![[Pasted image 20241227105503.png]]
+![Pasted image 20241227105503](https://github.com/user-attachments/assets/88076c51-ed8b-4a80-888a-764d02922e13)
 Kom ihåg att det är ackumulerad tillväxt (dvs beräkna år 3 på år 2). Värdena för år 1 är tagna från beräkningen vi gjorde ovan.
 
 Observera faktura som går från 2500 till 5250 på ett år, eftersom det även summeras. Den ökar kraftigt, och ännu mer ökar fakturarader. 
@@ -157,20 +157,20 @@ Faktura och fakturrader beräknas beroende på kundantal. Även om det finns ett
 
 För att kunna beräkna hur mycket diskutrymme man behöver måste man kunna beräkna hur mycket data varje tabell kräver. 
 
-![[Pasted image 20241227110528.png]]
+![Pasted image 20241227110528](https://github.com/user-attachments/assets/4ce99634-7da2-45bf-bfa3-ab2dc5333ec8)
 Man utgår från hur mycket utrymme varje datatyp i en tabell behöver. Det summeras, för att sedan kunna multiplicerad det med antal rader från tidigare. 
 
 Ex: Teletyp: 14 tecken, 5 rader = 70 bytes. Förblir likadan år 1 & 5.
 Ex: Kund: 175 tecken, 500 rader första året = 87 500 bytes
 	År 5: 128 109 bytes.
-![[Pasted image 20241227110654.png]]
+![Pasted image 20241227110654](https://github.com/user-attachments/assets/6f27d3eb-8421-4f19-b75d-8de7f19fab70)
 
 Notera att fakturarader är väääääldigt mycket större än alla andra efter 5 år, eftersom det är en stor mängd som växer exponentiellt.
 
 Faktura och faktura-rad kanske inte är intressant att behålla det efter massa år, med tanke på hur mycket utrymme det kommer ta. Ifall man vill arkivera bör man ta det med kunden för systemet. 
 ### Historik
 Skapa två tabeller som är precis likandana som faktura (fakturaH) och fakturarad (fakturaradH)som vi flyttar över historisk information till regelbundet. 
-![[Pasted image 20241227111405.png]]
+![Pasted image 20241227111405](https://github.com/user-attachments/assets/144e1edc-b151-440c-904d-9c81dc0eb524)
 Anledningen till att vi inte frikopplar FakturaH från kund är att vi vill fortfarande veta info om de äldre fakturorna. 
 
 Det är väldigt viktigt att man tänker på hur historik ska hanteras när man bygger databaser, eftersom annars kommer systemet bli långsammare och långsammare med tiden. 
